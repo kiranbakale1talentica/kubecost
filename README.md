@@ -20,7 +20,7 @@ Kubecost is a cost monitoring and optimization platform designed for Kubernetes 
 ## Prerequisites
 
 - **Helm Client** (version 3.1+): [Install Here](https://helm.sh/docs/intro/install/)
-- **Kubectl**: [Install Here](https://kubernetes.io/docs/tasks/tools/)
+- **Kubectl**: [Install Here](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html#kubectl-install-update)
 - A supported Kubernetes cluster (EKS version 1.23+ requires the Amazon EBS CSI driver).
 - Note: For EKS version 1.30 or later, a default StorageClass is no longer assigned.
 
