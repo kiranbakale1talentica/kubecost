@@ -73,6 +73,11 @@ Kubecost retrieves AWS pricing data, integrates it with Prometheus metrics, and 
    ```
 
 3. **Install AWS EBS CSI Driver**:
+   a. Associate/Enable IAM-OIDC-Provider
+   ```bash
+      eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster=my-cluster --approve
+   ```
+   
    a. Create an IAM service account:
    ```bash
    eksctl create iamserviceaccount \
@@ -90,14 +95,14 @@ Kubecost retrieves AWS pricing data, integrates it with Prometheus metrics, and 
        --service-account-role-arn $(aws iam get-role --role-name AmazonEKS_EBS_CSI_DriverRole --output json | jq -r '.Role.Arn') --force
    ```
 
-4. **Install Kubecost**:
+5. **Install Kubecost**:
    ```bash
    helm install kubecost cost-analyzer --repo https://kubecost.github.io/cost-analyzer/ \
        --namespace kubecost --create-namespace \
        --set kubecostToken="a2lyYW5iYWthbGU5QGdtYWlsLmNvbQ==xm343yadf98"
    ```
 
-5. **Access the Dashboard**:
+6. **Access the Dashboard**:
    Enable port-forwarding to expose the dashboard:
    ```bash
    kubectl port-forward --namespace kubecost deployment/cost-analyzer 9090
