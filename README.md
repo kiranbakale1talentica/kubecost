@@ -97,16 +97,21 @@ Kubecost retrieves AWS pricing data, integrates it with Prometheus metrics, and 
 
 5. **Install Kubecost**:
    ```bash
-   helm install kubecost cost-analyzer --repo https://kubecost.github.io/cost-analyzer/ \
-       --namespace kubecost --create-namespace \
-       --set kubecostToken="a2lyYW5iYWthbGU5QGdtYWlsLmNvbQ==xm343yadf98"
+   helm install kubecost cost-analyzer --repo https://kubecost.github.io/cost-analyzer/     --namespace kubecost --create-namespace --set prometheus.server.persistentVolume.storageClass="gp2" --set persistentVolume.storageClass="gp2""
    ```
 
 6. **Access the Dashboard**:
    Enable port-forwarding to expose the dashboard:
    ```bash
-   kubectl port-forward --namespace kubecost deployment/cost-analyzer 9090
+   kubectl port-forward --namespace kubecost deployment/kubecost-cost-analyzer 9090
    ```
+
+**We can also install kubecost using using plain manifest you can skip the helm steps above and apply manifest below**
+1. Clone the repository
+```bash
+kubectl apply -f kubecost.yaml
+```
+
 
 please check the below repo for more information on helm-values
 
