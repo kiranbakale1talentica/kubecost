@@ -111,6 +111,10 @@ Kubecost retrieves AWS pricing data, integrates it with Prometheus metrics, and 
 ```bash
 kubectl apply -f kubecost.yaml
 ```
+2. Enable port-forwarding to expose the dashboard:
+   ```bash
+   kubectl port-forward --namespace kubecost deployment/kubecost-cost-analyzer 9090
+   ```
 
 
 please check the below repo for more information on helm-values
